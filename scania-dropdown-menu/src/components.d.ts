@@ -8,10 +8,17 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
     interface MyButton {
     }
+    interface MyDialog {
+        "open": boolean;
+    }
     interface MyMenu {
     }
     interface MyMenuItem {
     }
+}
+export interface MyDialogCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLMyDialogElement;
 }
 declare global {
     interface HTMLMyButtonElement extends Components.MyButton, HTMLStencilElement {
@@ -19,6 +26,12 @@ declare global {
     var HTMLMyButtonElement: {
         prototype: HTMLMyButtonElement;
         new (): HTMLMyButtonElement;
+    };
+    interface HTMLMyDialogElement extends Components.MyDialog, HTMLStencilElement {
+    }
+    var HTMLMyDialogElement: {
+        prototype: HTMLMyDialogElement;
+        new (): HTMLMyDialogElement;
     };
     interface HTMLMyMenuElement extends Components.MyMenu, HTMLStencilElement {
     }
@@ -34,6 +47,7 @@ declare global {
     };
     interface HTMLElementTagNameMap {
         "my-button": HTMLMyButtonElement;
+        "my-dialog": HTMLMyDialogElement;
         "my-menu": HTMLMyMenuElement;
         "my-menu-item": HTMLMyMenuItemElement;
     }
@@ -41,12 +55,17 @@ declare global {
 declare namespace LocalJSX {
     interface MyButton {
     }
+    interface MyDialog {
+        "onOpenChanged"?: (event: MyDialogCustomEvent<any>) => void;
+        "open"?: boolean;
+    }
     interface MyMenu {
     }
     interface MyMenuItem {
     }
     interface IntrinsicElements {
         "my-button": MyButton;
+        "my-dialog": MyDialog;
         "my-menu": MyMenu;
         "my-menu-item": MyMenuItem;
     }
@@ -56,6 +75,7 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "my-button": LocalJSX.MyButton & JSXBase.HTMLAttributes<HTMLMyButtonElement>;
+            "my-dialog": LocalJSX.MyDialog & JSXBase.HTMLAttributes<HTMLMyDialogElement>;
             "my-menu": LocalJSX.MyMenu & JSXBase.HTMLAttributes<HTMLMyMenuElement>;
             "my-menu-item": LocalJSX.MyMenuItem & JSXBase.HTMLAttributes<HTMLMyMenuItemElement>;
         }
