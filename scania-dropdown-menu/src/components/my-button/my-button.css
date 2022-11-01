@@ -6,8 +6,7 @@
 
 button {
   background: var(--background);
-  border: 2px solid currentcolor;
-  border-radius: 1ex;
+  border: none;
   color: var(--color);
   cursor: pointer;
   padding: 0.5ex 1em;

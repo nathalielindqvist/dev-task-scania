@@ -1,18 +1,15 @@
 import { Component, Host, h } from '@stencil/core';
 
 @Component({
-  tag: 'my-button',
-  styleUrl: 'my-button.css',
+  tag: 'my-menu-item',
   shadow: true,
 })
-export class MyButton {
+export class MyMenuItem {
 
   render() {
     return (
       <Host>
-        <button part='button'>
-          <slot></slot>
-        </button>
+        <slot></slot>
       </Host>
     );
   }
