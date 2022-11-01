@@ -1,0 +1,18 @@
+:host {
+  --background: var(--button-background, white);
+  --background-hover: var(--button-background-hover, #E0E2EB);
+  --color: var(--button-color, black);
+}
+
+button {
+  background: var(--background);
+  border: 2px solid currentcolor;
+  border-radius: 1ex;
+  color: var(--color);
+  cursor: pointer;
+  padding: 0.5ex 1em;
+}
+
+button:hover {
+  --background: var(--background-hover);
+}
