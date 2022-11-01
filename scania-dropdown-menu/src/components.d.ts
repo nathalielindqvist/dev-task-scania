@@ -8,6 +8,10 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
     interface MyButton {
     }
+    interface MyMenu {
+    }
+    interface MyMenuItem {
+    }
 }
 declare global {
     interface HTMLMyButtonElement extends Components.MyButton, HTMLStencilElement {
@@ -16,15 +20,35 @@ declare global {
         prototype: HTMLMyButtonElement;
         new (): HTMLMyButtonElement;
     };
+    interface HTMLMyMenuElement extends Components.MyMenu, HTMLStencilElement {
+    }
+    var HTMLMyMenuElement: {
+        prototype: HTMLMyMenuElement;
+        new (): HTMLMyMenuElement;
+    };
+    interface HTMLMyMenuItemElement extends Components.MyMenuItem, HTMLStencilElement {
+    }
+    var HTMLMyMenuItemElement: {
+        prototype: HTMLMyMenuItemElement;
+        new (): HTMLMyMenuItemElement;
+    };
     interface HTMLElementTagNameMap {
         "my-button": HTMLMyButtonElement;
+        "my-menu": HTMLMyMenuElement;
+        "my-menu-item": HTMLMyMenuItemElement;
     }
 }
 declare namespace LocalJSX {
     interface MyButton {
     }
+    interface MyMenu {
+    }
+    interface MyMenuItem {
+    }
     interface IntrinsicElements {
         "my-button": MyButton;
+        "my-menu": MyMenu;
+        "my-menu-item": MyMenuItem;
     }
 }
 export { LocalJSX as JSX };
@@ -32,6 +56,8 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "my-button": LocalJSX.MyButton & JSXBase.HTMLAttributes<HTMLMyButtonElement>;
+            "my-menu": LocalJSX.MyMenu & JSXBase.HTMLAttributes<HTMLMyMenuElement>;
+            "my-menu-item": LocalJSX.MyMenuItem & JSXBase.HTMLAttributes<HTMLMyMenuItemElement>;
         }
     }
 }
