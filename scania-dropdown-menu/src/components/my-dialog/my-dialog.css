@@ -3,17 +3,26 @@
 }
 
 dialog {
-  border: 1px solid thistle;
-  border-radius: 1ex;
+  border: none;
   display: none;
-  inline-size: max-content;
-  inset-block-start: calc(100% + 5px);
-  inset-inline-end: auto;
-  inset-inline-start: 0;
+  width: 100%;
   padding: 0;
   position: absolute;
 }
 
 dialog[open] {
   display: block;
+}
+
+.dropdown-button {
+  background: white;
+  border: none;
+  border-bottom: 1px solid #CDD1DB;
+  border-radius: 4px 4px 0px 0px;
+  cursor: pointer;
+  padding: 1.25rem 1rem;
+}
+
+.dropdown-button:hover {
+  border-bottom: 1px solid #868FA2;
 }
