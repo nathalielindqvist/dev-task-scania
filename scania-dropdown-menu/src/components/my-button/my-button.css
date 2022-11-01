@@ -1,15 +1,17 @@
 :host {
   --background: var(--button-background, white);
-  --background-hover: var(--button-background-hover, #E0E2EB);
+  --background-hover: var(--button-background-hover, #EDEFF3);
   --color: var(--button-color, black);
 }
 
 button {
   background: var(--background);
-  border: none;
   color: var(--color);
   cursor: pointer;
-  padding: 0.5ex 1em;
+  padding: 1rem;
+  width: 100%;
+  text-align: left;
+  border: 1px solid #DBDFE6;
 }
 
 button:hover {

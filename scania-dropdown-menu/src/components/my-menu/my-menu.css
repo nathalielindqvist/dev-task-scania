@@ -11,11 +11,12 @@ menu {
 slot[name="label"] {
   align-items: center;
   display: flex;
+  color: #56657A;
 }
 
 slot[name="label"] svg {
-  fill: currentcolor;
-  block-size: 1em;
-  inline-size: 0.666em;
-  margin-inline-start: 1ex;
+  fill: #56657A;
+  block-size: 1rem;
+  inline-size: 0.666rem;
+  margin-inline-start: 4.125rem;
 }

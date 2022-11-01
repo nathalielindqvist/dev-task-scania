@@ -29,13 +29,13 @@ export class MyDialog {
     return (
       <Host>
         {/* Add a button with a click listener */}
-        <my-button
+        <button class="dropdown-button"
           onClick={() => {
             this.open = !this.open;
           }}
         >
           <slot name="activator">Activate</slot>
-        </my-button>
+        </button>
 
         <dialog open={this.open}>
           <slot></slot>
