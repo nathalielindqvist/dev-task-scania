@@ -20,3 +20,17 @@ slot[name="label"] svg {
   inline-size: 0.666rem;
   margin-inline-start: 4.125rem;
 }
+
+button {
+  background: #FFFFFF;
+  color: var(--color);
+  cursor: pointer;
+  padding: 1rem;
+  width: 100%;
+  text-align: left;
+  border: 1px solid #DBDFE6;
+}
+
+button:hover {
+  background: #EDEFF3;
+}

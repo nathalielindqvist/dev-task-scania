@@ -4,12 +4,14 @@ import { Component, Host, h } from '@stencil/core';
   tag: 'my-menu-item',
   shadow: true,
 })
-export class MyMenuItem {
 
+export class MyMenuItem {
   render() {
     return (
       <Host>
-        <slot></slot>
+        <button>
+          <slot></slot>
+        </button>
       </Host>
     );
   }
