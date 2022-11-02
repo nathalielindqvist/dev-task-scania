@@ -1,7 +1,8 @@
 import React, { useMemo } from "react";
 import Table from "./Table";
+import Header from "./Header";
 
-function App() {
+export default function App() {
 
   const columns = useMemo(
     () => [
@@ -34,9 +35,12 @@ function App() {
 
   return (
     <div className="App">
-      <Table columns={columns} data={data} />
+        <Header />
+        <div className="Container">
+            <div className="DataTable">
+              <Table columns={columns} data={data} />
+            </div>
+        </div>
     </div>
   );
 }
-
-export default App;
