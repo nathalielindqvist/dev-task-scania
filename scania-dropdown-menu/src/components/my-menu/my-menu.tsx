@@ -1,4 +1,4 @@
-import { Component, Host, h, Element, State } from '@stencil/core';
+import { Component, Host, h, Element, State, Watch, Event, EventEmitter } from '@stencil/core';
 
 @Component({
   tag: 'my-menu',
@@ -29,11 +29,17 @@ export class MyMenu {
   }
   private handleFirstButton() {
     this.dropdownTitle = this.firstButtonTitle;
-    this.open = false;
-    console.log(this.open)
+    this.open = !this.open;
   }
   private handleSecondButton() {
     this.dropdownTitle = this.secondButtonTitle;
+  }
+
+  @Event() openUpdated: EventEmitter;
+
+  @Watch("open")
+  openUpdatedHandler(open: boolean) {
+    this.openUpdated.emit({ open });
   }
 
   render() {
