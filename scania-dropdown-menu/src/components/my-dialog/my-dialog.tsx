@@ -25,6 +25,12 @@ export class MyDialog {
 
   @Event() openChanged: EventEmitter;
 
+  @Listen('openUpdated')
+  openUpdatedHandler(event: CustomEvent) {
+    this.open = event.detail.open;
+    console.log(this.open)
+  }
+
   render() {
     return (
       <Host>

@@ -20,6 +20,10 @@ export interface MyDialogCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLMyDialogElement;
 }
+export interface MyMenuCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLMyMenuElement;
+}
 declare global {
     interface HTMLMyButtonElement extends Components.MyButton, HTMLStencilElement {
     }
@@ -60,6 +64,7 @@ declare namespace LocalJSX {
         "open"?: boolean;
     }
     interface MyMenu {
+        "onOpenUpdated"?: (event: MyMenuCustomEvent<any>) => void;
     }
     interface MyMenuItem {
     }
