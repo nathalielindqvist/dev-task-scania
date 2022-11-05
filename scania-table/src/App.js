@@ -1,6 +1,7 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useState } from "react";
 import Table from "./Table";
 import Header from "./Header";
+import { MyMenu } from "component-library-react";
 
 export default function App() {
 
@@ -33,10 +34,16 @@ export default function App() {
     { driver: "Niklas Rosén", company: "DD Interactive", distance: "200,000 km", score: "78" }
   ]
 
+  const [selected, setSelected] = useState('test');
+  console.log(MyMenu)
+
   return (
     <div className="App">
         <Header />
         <div className="Container">
+          <MyMenu />
+          <button>Reset</button>
+          <p>{selected}</p>
             <div className="DataTable">
               <Table columns={columns} data={data} />
             </div>
