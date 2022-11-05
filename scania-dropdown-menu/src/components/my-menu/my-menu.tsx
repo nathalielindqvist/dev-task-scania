@@ -33,6 +33,7 @@ export class MyMenu {
   }
   private handleSecondButton() {
     this.dropdownTitle = this.secondButtonTitle;
+    this.open = !this.open;
   }
 
   @Event() openUpdated: EventEmitter;
@@ -47,7 +48,7 @@ export class MyMenu {
       <Host>
         <slot></slot>
 
-        <my-dialog onOpenChanged={(event) => this.handleToggle(event)}>
+        <my-dialog onOpenChanged={(event) => this.handleToggle(event)} open={this.open}>
           <slot slot="activator" name="label">
             {this.dropdownTitle}
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16" aria-label={this.open ? "Expanded" : "Collapsed"}>
