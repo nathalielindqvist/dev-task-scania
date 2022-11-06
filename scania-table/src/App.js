@@ -80,7 +80,6 @@ export default function App() {
           <div className="DropdownMenu">
             <MyMenu reset={selected} onTitleUpdated={({ detail }) => setSelected(detail.dropdownTitle)} />
             <button className="Reset" onClick={handleReset}>Reset</button>
-            <p>{selected}</p>
           </div>
             <div className="DataTable">
               <Table random={selected} columns={columns} data={decoratedData} />
