@@ -1,7 +1,7 @@
 import React, { useMemo, useState } from "react";
 import Table from "./Table";
 import Header from "./Header";
-import { MyMenu } from "react-proxy-component";
+import { MyMenu } from "nathalielindqvist-react-dropdown-menu";
 
 export default function App() {
 
@@ -35,9 +35,20 @@ export default function App() {
   ]
 
   const [selected, setSelected] = useState('Select distance');
+  // const [selected, setSelected] = useState({
+  //   title: 'Select distance',
+  //   operator: '',
+  //   value: 0
+  // });
 
   function handleReset(e) {
     setSelected('Select distance');
+  //    setSelected({
+  //   title: 'Select distance',
+  //   operator: '',
+  //   value: 0
+  // });
+
   }
 
   const filtredData = data.filter(item => {
@@ -53,7 +64,11 @@ export default function App() {
       return true;
     }
   })
-
+ const filteredData2 = data.filter(item => {
+  if (selected.operator === 'gt'){ return item.distance > selected.value }
+  else if (selected.operator === 'lte'){ return item.distance <= selected.value }
+  else return true
+ })
   const decoratedData = filtredData.map(item => {
     return {...item, distance: `${parseInt( item.distance ).toLocaleString('en')} km`}
   })

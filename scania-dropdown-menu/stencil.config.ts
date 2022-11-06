@@ -7,7 +7,7 @@ export const config: Config = {
   outputTargets: [
     react({
       componentCorePackage: 'nathalielindqvist-dropdown-menu',
-      proxiesFile: '../react-proxy-component/src/components/stencil-generated/index.ts',
+      proxiesFile: '../nathalielindqvist-react-dropdown-menu/src/components/stencil-generated/index.ts',
       includeDefineCustomElements: true,
     }),
     {

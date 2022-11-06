@@ -12,9 +12,18 @@ export class MyMenu {
   @State() open = false;
 
   @State() dropdownTitle = 'Select distance';
-  @State() firstButtonTitle = '<= 200.000 km';
-  @State() secondButtonTitle = '> 200.000 km';
-
+  @State() firstButtonTitle = '<= 200.000 km'; //remove
+  @State() firstButton = {
+    title: '<= 200.000 km',
+    operator: 'lte',
+    value: 200000
+  }
+  @State() secondButtonTitle = '> 200.000 km'; // remove
+  @State() secondButton = {
+    title: '> 200.000 km',
+    operator: 'gt',
+    value: 200000
+  }
   @Watch("dropdownTitle")
   titleUpdatedHandler(dropdownTitle: string) {
     this.titleUpdated.emit({ dropdownTitle });
@@ -31,11 +40,11 @@ export class MyMenu {
     this.open = event.detail.open;
   }
   private handleFirstButton() {
-    this.dropdownTitle = this.firstButtonTitle;
+    this.dropdownTitle = this.firstButton.title;
     this.open = !this.open;
   }
   private handleSecondButton() {
-    this.dropdownTitle = this.secondButtonTitle;
+    this.dropdownTitle = this.secondButton.title;
     this.open = !this.open;
   }
 
@@ -53,10 +62,10 @@ export class MyMenu {
           </slot>
           <menu>
             <button onClick={() => this.handleFirstButton()}>
-              {this.firstButtonTitle}
+              {this.firstButton.title}
             </button>
             <button onClick={() => this.handleSecondButton()}>
-              {this.secondButtonTitle}
+              {this.secondButton.title}
             </button>
           </menu>
         </my-dialog>
