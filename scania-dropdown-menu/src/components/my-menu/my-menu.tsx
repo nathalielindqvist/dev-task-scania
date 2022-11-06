@@ -1,3 +1,4 @@
+import { Component, Host, h, State, Prop, Event, EventEmitter, Watch } from '@stencil/core';
 
 @Component({
   tag: 'my-menu',
@@ -13,6 +14,18 @@ export class MyMenu {
   @State() dropdownTitle = 'Select distance';
   @State() firstButtonTitle = '<= 200.000 km';
   @State() secondButtonTitle = '> 200.000 km';
+
+  @Watch("dropdownTitle")
+  titleUpdatedHandler(dropdownTitle: string) {
+    this.titleUpdated.emit({ dropdownTitle });
+  }
+
+  @Watch("reset")
+  resetUpdatedHandler(reset: string) {
+    this.dropdownTitle = this.reset;
+  }
+
+  @Event() titleUpdated: EventEmitter;
 
   private handleToggle(event: CustomEvent) {
     this.open = event.detail.open;
