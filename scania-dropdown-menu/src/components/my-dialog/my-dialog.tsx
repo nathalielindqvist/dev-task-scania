@@ -25,22 +25,15 @@ export class MyDialog {
 
   @Event() openChanged: EventEmitter;
 
-  @Listen('openUpdated')
-  openUpdatedHandler(event: CustomEvent) {
-    this.open = event.detail.open;
-    console.log(this.open)
-  }
-
   render() {
     return (
       <Host>
-        {/* Add a button with a click listener */}
         <button class="dropdown-button"
           onClick={() => {
             this.open = !this.open;
           }}
         >
-          <slot name="activator">Activate</slot>
+          <slot name="activator"></slot>
         </button>
 
         <dialog open={this.open}>

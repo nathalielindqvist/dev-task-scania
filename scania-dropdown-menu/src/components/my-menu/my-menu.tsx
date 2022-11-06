@@ -1,4 +1,4 @@
-import { Component, Host, h, Element, State, Watch, Event, EventEmitter } from '@stencil/core';
+import { Component, Host, h, State, Prop, Event, EventEmitter, Watch } from '@stencil/core';
 
 @Component({
   tag: 'my-menu',
@@ -7,47 +7,51 @@ import { Component, Host, h, Element, State, Watch, Event, EventEmitter } from '
 })
 export class MyMenu {
 
-  @Element() el: HTMLElement;
-
-  @State() items: HTMLMyMenuItemElement[] = [];
-
-  componentWillLoad() {
-    this.items = Array.from(this.el.querySelectorAll("my-menu-item"));
-    this.items.forEach((item, i) => {
-      item.slot = `item-${i}`;
-    });
-  }
+  @Prop() reset: string;
 
   @State() open = false;
 
   @State() dropdownTitle = 'Select distance';
-  @State() firstButtonTitle = '<= 200.000 km';
-  @State() secondButtonTitle = '> 200.000 km';
+  @State() firstButtonTitle = '<= 200.000 km'; //remove
+  @State() firstButton = {
+    title: '<= 200.000 km',
+    operator: 'lte',
+    value: 200000
+  }
+  @State() secondButtonTitle = '> 200.000 km'; // remove
+  @State() secondButton = {
+    title: '> 200.000 km',
+    operator: 'gt',
+    value: 200000
+  }
+  @Watch("dropdownTitle")
+  titleUpdatedHandler(dropdownTitle: string) {
+    this.titleUpdated.emit({ dropdownTitle });
+  }
+
+  @Watch("reset")
+  resetUpdatedHandler(reset: string) {
+    this.dropdownTitle = reset;
+  }
+
+  @Event() titleUpdated: EventEmitter;
 
   private handleToggle(event: CustomEvent) {
     this.open = event.detail.open;
   }
   private handleFirstButton() {
-    this.dropdownTitle = this.firstButtonTitle;
+    this.dropdownTitle = this.firstButton.title;
     this.open = !this.open;
   }
   private handleSecondButton() {
-    this.dropdownTitle = this.secondButtonTitle;
-  }
-
-  @Event() openUpdated: EventEmitter;
-
-  @Watch("open")
-  openUpdatedHandler(open: boolean) {
-    this.openUpdated.emit({ open });
+    this.dropdownTitle = this.secondButton.title;
+    this.open = !this.open;
   }
 
   render() {
     return (
       <Host>
-        <slot></slot>
-
-        <my-dialog onOpenChanged={(event) => this.handleToggle(event)}>
+        <my-dialog onOpenChanged={(event) => this.handleToggle(event)} open={this.open}>
           <slot slot="activator" name="label">
             {this.dropdownTitle}
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16" aria-label={this.open ? "Expanded" : "Collapsed"}>
@@ -57,20 +61,11 @@ export class MyMenu {
             </svg>
           </slot>
           <menu>
-            {/* {this.items.map((_, i) => (
-              <li>
-                <slot name={`item-${i}`}></slot>
-              </li>
-            ))} */}
             <button onClick={() => this.handleFirstButton()}>
-              <li>
-                {this.firstButtonTitle}
-              </li>
+              {this.firstButton.title}
             </button>
             <button onClick={() => this.handleSecondButton()}>
-              <li>
-                {this.secondButtonTitle}
-              </li>
+              {this.secondButton.title}
             </button>
           </menu>
         </my-dialog>

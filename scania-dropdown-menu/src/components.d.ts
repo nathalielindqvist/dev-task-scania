@@ -6,14 +6,11 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
-    interface MyButton {
-    }
     interface MyDialog {
         "open": boolean;
     }
     interface MyMenu {
-    }
-    interface MyMenuItem {
+        "reset": string;
     }
 }
 export interface MyDialogCustomEvent<T> extends CustomEvent<T> {
@@ -25,12 +22,6 @@ export interface MyMenuCustomEvent<T> extends CustomEvent<T> {
     target: HTMLMyMenuElement;
 }
 declare global {
-    interface HTMLMyButtonElement extends Components.MyButton, HTMLStencilElement {
-    }
-    var HTMLMyButtonElement: {
-        prototype: HTMLMyButtonElement;
-        new (): HTMLMyButtonElement;
-    };
     interface HTMLMyDialogElement extends Components.MyDialog, HTMLStencilElement {
     }
     var HTMLMyDialogElement: {
@@ -43,46 +34,31 @@ declare global {
         prototype: HTMLMyMenuElement;
         new (): HTMLMyMenuElement;
     };
-    interface HTMLMyMenuItemElement extends Components.MyMenuItem, HTMLStencilElement {
-    }
-    var HTMLMyMenuItemElement: {
-        prototype: HTMLMyMenuItemElement;
-        new (): HTMLMyMenuItemElement;
-    };
     interface HTMLElementTagNameMap {
-        "my-button": HTMLMyButtonElement;
         "my-dialog": HTMLMyDialogElement;
         "my-menu": HTMLMyMenuElement;
-        "my-menu-item": HTMLMyMenuItemElement;
     }
 }
 declare namespace LocalJSX {
-    interface MyButton {
-    }
     interface MyDialog {
         "onOpenChanged"?: (event: MyDialogCustomEvent<any>) => void;
         "open"?: boolean;
     }
     interface MyMenu {
-        "onOpenUpdated"?: (event: MyMenuCustomEvent<any>) => void;
-    }
-    interface MyMenuItem {
+        "onTitleUpdated"?: (event: MyMenuCustomEvent<any>) => void;
+        "reset"?: string;
     }
     interface IntrinsicElements {
-        "my-button": MyButton;
         "my-dialog": MyDialog;
         "my-menu": MyMenu;
-        "my-menu-item": MyMenuItem;
     }
 }
 export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
-            "my-button": LocalJSX.MyButton & JSXBase.HTMLAttributes<HTMLMyButtonElement>;
             "my-dialog": LocalJSX.MyDialog & JSXBase.HTMLAttributes<HTMLMyDialogElement>;
             "my-menu": LocalJSX.MyMenu & JSXBase.HTMLAttributes<HTMLMyMenuElement>;
-            "my-menu-item": LocalJSX.MyMenuItem & JSXBase.HTMLAttributes<HTMLMyMenuItemElement>;
         }
     }
 }

@@ -1,6 +1,11 @@
 .Container {
   background: #F5F5F5;
   height: 100vh;
+  padding: 2.5rem 0 0 2.5rem;
+}
+
+.DropdownMenu {
+  display: flex;
 }
 
 .TitleContainer {
@@ -26,7 +31,7 @@
 
 .DataTable {
   max-width: 768px;
-  padding: 2.5rem 0 0 2.5rem;
+  padding-top: 1.5rem;
 }
 
 table {
@@ -50,4 +55,13 @@ table th {
   padding-bottom: 12px;
   text-align: left;
   background-color: #E0E2EB;
+}
+
+.Reset {
+  margin: 0 1.5rem;
+  border: none;
+  text-decoration: underline;
+  background: #F5F5F5;
+  color: #2058A8;
+  cursor: pointer;
 }

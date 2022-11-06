@@ -1,39 +1,21 @@
-import React, { useState } from "react";
-import { useFilters, useSortBy, useTable } from "react-table";
+import React, { useState} from "react";
+import { useFilters, useTable } from "react-table";
 import "./App.css";
 
 
 export default function Table({ columns, data }) {
-
-    const [filterShowInput, setFilterInput] = useState("");
-    const [filterGenreInput, setGenreInput] = useState("");
-
-    const handleShowFilterChange = e => {
-        const valueShow = e.target.value || undefined;
-        setFilter("show.name", valueShow);
-        setFilterInput(valueShow);
-      };
-
-    const handleGenreFilterChange = e => {
-        const valueGenre = e.target.value || undefined;
-        setFilter("show.genres", valueGenre);
-        setGenreInput(valueGenre);
-      };
-
 
   const {
     getTableProps,
     getTableBodyProps,
     headerGroups,
     rows,
-    prepareRow,
-    setFilter
+    prepareRow
   } = useTable({
     columns,
     data
   },
-  useFilters,
-  useSortBy
+  useFilters
   );
 
   return (
