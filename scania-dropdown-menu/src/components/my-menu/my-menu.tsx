@@ -1,4 +1,3 @@
-import { Component, Host, h, Element, State, Watch, Event, EventEmitter } from '@stencil/core';
 
 @Component({
   tag: 'my-menu',
@@ -7,16 +6,7 @@ import { Component, Host, h, Element, State, Watch, Event, EventEmitter } from '
 })
 export class MyMenu {
 
-  @Element() el: HTMLElement;
-
-  @State() items: HTMLMyMenuItemElement[] = [];
-
-  componentWillLoad() {
-    this.items = Array.from(this.el.querySelectorAll("my-menu-item"));
-    this.items.forEach((item, i) => {
-      item.slot = `item-${i}`;
-    });
-  }
+  @Prop() reset: string;
 
   @State() open = false;
 
@@ -36,18 +26,9 @@ export class MyMenu {
     this.open = !this.open;
   }
 
-  @Event() openUpdated: EventEmitter;
-
-  @Watch("open")
-  openUpdatedHandler(open: boolean) {
-    this.openUpdated.emit({ open });
-  }
-
   render() {
     return (
       <Host>
-        <slot></slot>
-
         <my-dialog onOpenChanged={(event) => this.handleToggle(event)} open={this.open}>
           <slot slot="activator" name="label">
             {this.dropdownTitle}
@@ -58,20 +39,11 @@ export class MyMenu {
             </svg>
           </slot>
           <menu>
-            {/* {this.items.map((_, i) => (
-              <li>
-                <slot name={`item-${i}`}></slot>
-              </li>
-            ))} */}
             <button onClick={() => this.handleFirstButton()}>
-              <li>
-                {this.firstButtonTitle}
-              </li>
+              {this.firstButtonTitle}
             </button>
             <button onClick={() => this.handleSecondButton()}>
-              <li>
-                {this.secondButtonTitle}
-              </li>
+              {this.secondButtonTitle}
             </button>
           </menu>
         </my-dialog>

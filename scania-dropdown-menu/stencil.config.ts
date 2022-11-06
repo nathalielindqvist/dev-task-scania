@@ -7,19 +7,11 @@ export const config: Config = {
   outputTargets: [
     react({
       componentCorePackage: 'nathalielindqvist-dropdown-menu',
-      proxiesFile: '../component-library-react/src/components/stencil-generated/index.ts',
-      includeDefineCustomElements: false,
+      proxiesFile: '../react-proxy-component/src/components/stencil-generated/index.ts',
+      includeDefineCustomElements: true,
     }),
     {
       type: 'dist',
-      esmLoaderPath: '../loader',
-    },
-    {
-      type: 'dist-custom-elements',
-    },
-    {
-      type: 'dist',
-      esmLoaderPath: '../loader',
     },
     {
       type: 'dist-custom-elements',
