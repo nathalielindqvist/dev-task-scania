@@ -22,7 +22,7 @@ export class MyMenu {
 
   @Watch("reset")
   resetUpdatedHandler(reset: string) {
-    this.dropdownTitle = this.reset;
+    this.dropdownTitle = reset;
   }
 
   @Event() titleUpdated: EventEmitter;
