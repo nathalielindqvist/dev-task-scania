@@ -12,13 +12,11 @@ export class MyMenu {
   @State() open = false;
 
   @State() dropdownTitle = 'Select distance';
-  @State() firstButtonTitle = '<= 200.000 km'; //remove
   @State() firstButton = {
     title: '<= 200.000 km',
     operator: 'lte',
     value: 200000
   }
-  @State() secondButtonTitle = '> 200.000 km'; // remove
   @State() secondButton = {
     title: '> 200.000 km',
     operator: 'gt',
@@ -61,10 +59,10 @@ export class MyMenu {
             </svg>
           </slot>
           <menu>
-            <button onClick={() => this.handleFirstButton()}>
+            <button onClick={() => this.handleFirstButton()} class={this.dropdownTitle === this.firstButton.title ? "active" : ""}>
               {this.firstButton.title}
             </button>
-            <button onClick={() => this.handleSecondButton()}>
+            <button onClick={() => this.handleSecondButton()} class={this.dropdownTitle === this.secondButton.title ? "active" : ""}>
               {this.secondButton.title}
             </button>
           </menu>

@@ -22,6 +22,11 @@ dialog[open] {
   cursor: pointer;
   padding: 1.25rem 1rem;
   min-width: 200px;
+  font-family: "Scania Sans Semi Condensed";
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  color:  #56657A;
 }
 
 .dropdown-button:hover {

@@ -34,7 +34,7 @@ export default function App() {
     { driver: "Niklas Rosén", company: "DD Interactive", distance: 200000, score: 78 }
   ]
 
-  const [selected, setSelected] = useState('Select distance');
+   const [selected, setSelected] = useState('Select distance');
   // const [selected, setSelected] = useState({
   //   title: 'Select distance',
   //   operator: '',
@@ -51,7 +51,7 @@ export default function App() {
 
   }
 
-  const filtredData = data.filter(item => {
+  const filteredData = data.filter(item => {
     if (selected === "<= 200.000 km") {
         if (item.distance <= 200000) {
           return true;
@@ -64,12 +64,12 @@ export default function App() {
       return true;
     }
   })
- const filteredData2 = data.filter(item => {
-  if (selected.operator === 'gt'){ return item.distance > selected.value }
-  else if (selected.operator === 'lte'){ return item.distance <= selected.value }
-  else return true
- })
-  const decoratedData = filtredData.map(item => {
+//  const filteredData2 = data.filter(item => {
+//   if (selected.operator === 'gt'){ return item.distance > selected.value }
+//   else if (selected.operator === 'lte'){ return item.distance <= selected.value }
+//   else return true
+//  })
+  const decoratedData = filteredData.map(item => {
     return {...item, distance: `${parseInt( item.distance ).toLocaleString('en')} km`}
   })
 
@@ -82,7 +82,7 @@ export default function App() {
             <button className="Reset" onClick={handleReset}>Reset</button>
           </div>
             <div className="DataTable">
-              <Table random={selected} columns={columns} data={decoratedData} />
+              <Table columns={columns} data={decoratedData} />
             </div>
         </div>
     </div>
