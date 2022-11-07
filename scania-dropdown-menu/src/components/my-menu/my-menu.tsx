@@ -12,13 +12,11 @@ export class MyMenu {
   @State() open = false;
 
   @State() dropdownTitle = 'Select distance';
-  @State() firstButtonTitle = '<= 200.000 km'; //remove
   @State() firstButton = {
     title: '<= 200.000 km',
     operator: 'lte',
     value: 200000
   }
-  @State() secondButtonTitle = '> 200.000 km'; // remove
   @State() secondButton = {
     title: '> 200.000 km',
     operator: 'gt',

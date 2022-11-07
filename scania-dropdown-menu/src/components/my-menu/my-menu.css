@@ -38,3 +38,7 @@ button {
 button:hover {
   background: #EDEFF3;
 }
+
+.active {
+  background: #EDEFF3;
+}
