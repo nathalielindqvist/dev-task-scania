@@ -59,10 +59,10 @@ export class MyMenu {
             </svg>
           </slot>
           <menu>
-            <button onClick={() => this.handleFirstButton()}>
+            <button onClick={() => this.handleFirstButton()} class={this.dropdownTitle === this.firstButton.title ? "active" : ""}>
               {this.firstButton.title}
             </button>
-            <button onClick={() => this.handleSecondButton()}>
+            <button onClick={() => this.handleSecondButton()} class={this.dropdownTitle === this.secondButton.title ? "active" : ""}>
               {this.secondButton.title}
             </button>
           </menu>
