@@ -5,6 +5,7 @@ import { MyMenu } from "nathalielindqvist-react-proxy-dropdown";
 
 export default function App() {
 
+  // Columns for React table
   const columns = useMemo(
     () => [
       {
@@ -27,6 +28,7 @@ export default function App() {
     []
   );
 
+  // Data set
   const data= [
     { driver: "Marcus Lundberg", company: "Aris FC", distance: 75044, score: 52 },
     { driver: "Marcus Mena Pacheco", company: "Lio LTD", distance: 129417, score: 95 },
@@ -41,8 +43,10 @@ export default function App() {
   //   value: 0
   // });
 
+  // Function to reset selected state and then pass as prop to child component to change dropdown title
   function handleReset(e) {
     setSelected('Select distance');
+
   //    setSelected({
   //   title: 'Select distance',
   //   operator: '',
@@ -51,6 +55,7 @@ export default function App() {
 
   }
 
+  // Filter function for filtering data based on which option is chosen in dropdown menu
   const filteredData = data.filter(item => {
     if (selected === "<= 200.000 km") {
         if (item.distance <= 200000) {
@@ -69,6 +74,8 @@ export default function App() {
 //   else if (selected.operator === 'lte'){ return item.distance <= selected.value }
 //   else return true
 //  })
+
+  // Function for adding comma and "km" decorations to distance data
   const decoratedData = filteredData.map(item => {
     return {...item, distance: `${parseInt( item.distance ).toLocaleString('en')} km`}
   })

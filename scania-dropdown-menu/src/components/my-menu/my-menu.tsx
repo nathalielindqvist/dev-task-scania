@@ -12,6 +12,7 @@ export class MyMenu {
   @State() open = false;
 
   @State() dropdownTitle = 'Select distance';
+
   @State() firstButton = {
     title: '<= 200.000 km',
     operator: 'lte',
@@ -22,11 +23,14 @@ export class MyMenu {
     operator: 'gt',
     value: 200000
   }
+
+  // Watches for changes to dropdownTitle state and emits changes to parent component in React project
   @Watch("dropdownTitle")
   titleUpdatedHandler(dropdownTitle: string) {
     this.titleUpdated.emit({ dropdownTitle });
   }
 
+  // Watches for changes to reset prop and changes dropdownTitle state to its value
   @Watch("reset")
   resetUpdatedHandler(reset: string) {
     this.dropdownTitle = reset;
@@ -34,13 +38,20 @@ export class MyMenu {
 
   @Event() titleUpdated: EventEmitter;
 
+  // Sets local open state to value of emitted open state from my-dialog component
   private handleToggle(event: CustomEvent) {
     this.open = event.detail.open;
   }
+
+  // When first option in dropdown button is clicked, it changes dropdownTitle state to the title value of the first button
+  // and changes local open state to false
   private handleFirstButton() {
     this.dropdownTitle = this.firstButton.title;
     this.open = !this.open;
   }
+
+  // When second option in dropdown button is clicked, it changes dropdownTitle state to the title value of the second button
+  // and changes local open state to false
   private handleSecondButton() {
     this.dropdownTitle = this.secondButton.title;
     this.open = !this.open;
@@ -70,5 +81,4 @@ export class MyMenu {
       </Host>
     );
   }
-
 }

@@ -18,6 +18,7 @@ export class MyDialog {
     }
   }
 
+  // Watches for changes to open prop and emits changes to my-menu component
   @Watch("open")
   openChangedHandler(open: boolean) {
     this.openChanged.emit({ open });
@@ -36,6 +37,7 @@ export class MyDialog {
           <slot name="activator"></slot>
         </button>
 
+          {/* If open is true, the dialog box is visable. If not, it is hidden */}
         <dialog open={this.open}>
           <slot></slot>
         </dialog>
