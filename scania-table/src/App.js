@@ -1,7 +1,7 @@
 import React, { useMemo, useState } from "react";
 import Table from "./Table";
 import Header from "./Header";
-import { MyMenu } from "nathalielindqvist-react-dropdown-menu";
+import { MyMenu } from "nathalielindqvist-react-proxy-dropdown";
 
 export default function App() {
 
