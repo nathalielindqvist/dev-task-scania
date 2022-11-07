@@ -17,18 +17,22 @@ slot[name="label"] {
 slot[name="label"] svg {
   fill: #56657A;
   block-size: 1rem;
-  inline-size: 0.666rem;
+  inline-size: 0.93rem;
   margin-inline-start: 4.125rem;
 }
 
 button {
   background: #FFFFFF;
-  color: var(--color);
+  color: #171719;
   cursor: pointer;
   padding: 1rem;
   width: 100%;
   text-align: left;
   border: 1px solid #DBDFE6;
+  font-family: "Scania Sans Semi Condensed";
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
 }
 
 button:hover {
